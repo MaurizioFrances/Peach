@@ -1,0 +1,1148 @@
+fileFormatVersion: 2
+guid: e6020a27a66de4ea292ebc38e6e37228
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: 4096ShapeSheet3
+    21300002: 4096ShapeSheet3_0
+    21300004: 4096ShapeSheet3_1
+    21300006: 4096ShapeSheet3_2
+    21300008: 4096ShapeSheet3_3
+    21300010: 4096ShapeSheet3_4
+    21300012: 4096ShapeSheet3_5
+    21300014: 4096ShapeSheet3_6
+    21300016: 4096ShapeSheet3_7
+    21300018: 4096ShapeSheet3_8
+    21300020: 4096ShapeSheet3_9
+    21300022: 4096ShapeSheet3_10
+    21300024: 4096ShapeSheet3_11
+    21300026: 4096ShapeSheet3_12
+    21300028: 4096ShapeSheet3_13
+    21300030: 4096ShapeSheet3_14
+    21300032: 4096ShapeSheet3_15
+    21300034: 4096ShapeSheet3_16
+    21300036: 4096ShapeSheet3_17
+    21300038: 4096ShapeSheet3_18
+    21300040: 4096ShapeSheet3_19
+    21300042: 4096ShapeSheet3_20
+    21300044: 4096ShapeSheet3_21
+    21300046: 4096ShapeSheet3_22
+    21300048: 4096ShapeSheet3_23
+    21300050: 4096ShapeSheet3_24
+    21300052: 4096ShapeSheet3_25
+    21300054: 4096ShapeSheet3_26
+    21300056: 4096ShapeSheet3_27
+    21300058: 4096ShapeSheet3_28
+    21300060: 4096ShapeSheet3_29
+    21300062: 4096ShapeSheet3_30
+    21300064: 4096ShapeSheet3_31
+    21300066: 4096ShapeSheet3_32
+    21300068: 4096ShapeSheet3_33
+    21300070: 4096ShapeSheet3_34
+    21300072: 4096ShapeSheet3_35
+    21300074: 4096ShapeSheet3_36
+    21300076: 4096ShapeSheet3_37
+    21300078: 4096ShapeSheet3_38
+    21300080: 4096ShapeSheet3_39
+    21300082: 4096ShapeSheet3_40
+    21300084: 4096ShapeSheet3_41
+    21300086: 4096ShapeSheet3_42
+    21300088: 4096ShapeSheet3_43
+    21300090: 4096ShapeSheet3_44
+    21300092: 4096ShapeSheet3_45
+    21300094: 4096ShapeSheet3_46
+    21300096: 4096ShapeSheet3_47
+    21300098: 4096ShapeSheet3_48
+    21300100: 4096ShapeSheet3_49
+    21300102: 4096ShapeSheet3_50
+    21300104: 4096ShapeSheet3_51
+    21300106: 4096ShapeSheet3_52
+    21300108: 4096ShapeSheet3_53
+    21300110: 4096ShapeSheet3_54
+    21300112: 4096ShapeSheet3_55
+    21300114: 4096ShapeSheet3_56
+    21300116: 4096ShapeSheet3_57
+    21300118: 4096ShapeSheet3_58
+    21300120: 4096ShapeSheet3_59
+    21300122: 4096ShapeSheet3_60
+    21300124: 4096ShapeSheet3_61
+    21300126: 4096ShapeSheet3_62
+    21300128: 4096ShapeSheet3_63
+    21300130: 4096ShapeSheet3_64
+    21300132: 4096ShapeSheet3_65
+    21300134: 4096ShapeSheet3_66
+    21300136: 4096ShapeSheet3_67
+    21300138: 4096ShapeSheet3_68
+    21300140: 4096ShapeSheet3_69
+    21300142: 4096ShapeSheet3_70
+    21300144: 4096ShapeSheet3_71
+    21300146: 4096ShapeSheet3_72
+    21300148: 4096ShapeSheet3_73
+    21300150: 4096ShapeSheet3_74
+    21300152: 4096ShapeSheet3_75
+    21300154: 4096ShapeSheet3_76
+    21300156: 4096ShapeSheet3_77
+    21300158: 4096ShapeSheet3_78
+    21300160: 4096ShapeSheet3_79
+    21300162: 4096ShapeSheet3_80
+    21300164: 4096ShapeSheet3_81
+    21300166: 4096ShapeSheet3_82
+    21300168: 4096ShapeSheet3_83
+    21300170: 4096ShapeSheet3_84
+    21300172: 4096ShapeSheet3_85
+    21300174: 4096ShapeSheet3_86
+    21300176: 4096ShapeSheet3_87
+    21300178: 4096ShapeSheet3_88
+    21300180: 4096ShapeSheet3_89
+    21300182: 4096ShapeSheet3_90
+    21300184: 4096ShapeSheet3_91
+    21300186: 4096ShapeSheet3_92
+    21300188: 4096ShapeSheet3_93
+    21300190: 4096ShapeSheet3_94
+    21300192: 4096ShapeSheet3_95
+    21300194: 4096ShapeSheet3_96
+    21300196: 4096ShapeSheet3_97
+    21300198: 4096ShapeSheet3_98
+    21300200: 4096ShapeSheet3_99
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: 4096ShapeSheet3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 3696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_2
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 3696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_3
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 3696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_4
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 3696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_5
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 3696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_6
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 3696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_7
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 3696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_8
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 3696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_9
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 3696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_11
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 3296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_12
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 3296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_13
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 3296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_14
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 3296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_15
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 3296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_16
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 3296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_17
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 3296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_18
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 3296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_19
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 3296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_21
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 2896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_22
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 2896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_23
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 2896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_24
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 2896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_25
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_26
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 2896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_27
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 2896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_28
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 2896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_29
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 2896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_31
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 2496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_32
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 2496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_33
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 2496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_34
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 2496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_35
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_36
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 2496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_37
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 2496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_38
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 2496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_39
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 2496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2096
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_41
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 2096
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_42
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 2096
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_43
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 2096
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_44
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 2096
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_45
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2096
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_46
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 2096
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_47
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 2096
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_48
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 2096
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_49
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 2096
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_51
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_52
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_53
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_54
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_55
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_56
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 1696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_57
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 1696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_58
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 1696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_59
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 1696
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_61
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_62
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_63
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_64
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_65
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 1296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_66
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 1296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_67
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 1296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_68
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 1296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_69
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 1296
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_71
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_72
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_73
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_74
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_75
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_76
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_77
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_78
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_79
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 896
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_81
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_82
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_83
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_84
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_85
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_86
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_87
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_88
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_89
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 496
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_91
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 96
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_92
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 96
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_93
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 96
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_94
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 96
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_95
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 96
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_96
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 96
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_97
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 96
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_98
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 96
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: 4096ShapeSheet3_99
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 96
+        width: 400
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
