@@ -12,8 +12,13 @@ public class ShapeManager_Script : MonoBehaviour {
 
 	public Sprite[] shapesSprites;
 
+	public int[] difficultyOrder;
+
 	private GameObject leftShape;
 	private GameObject rightShape;
+
+	private UITweener leftShape_Tween;
+	private UITweener rightShape_Tween;
 
 	//private SpriteRenderer leftShapeRenderer;
 	//private SpriteRenderer midShapeRenderer;
@@ -88,12 +93,17 @@ public class ShapeManager_Script : MonoBehaviour {
 		rightShapeBottomRenderer =  GameObject.Find("SR_Bottom").GetComponent<UI2DSprite>();
 		//NEW
 
-		ToggleAnswerShapes(false);
+		//MORE NEW
+		leftShape_Tween = GameObject.Find("Shape_Left_StartTween").GetComponent<UITweener>();
+		rightShape_Tween = GameObject.Find("Shape_Right_StartTween").GetComponent<UITweener>();
+		//MORE NEW
+
+		//ToggleAnswerShapes(false);
 	}
 
 	// Use this for initialization
 	void Start () {
-		
+		ToggleAnswerShapes(false);
 
 	}
 	
@@ -144,6 +154,16 @@ public class ShapeManager_Script : MonoBehaviour {
 
 	public int GetAmountOfShapes(){
 		return shapesSprites.Length;
+	}
+
+	//Converts a difficulty value (0-49) in a correct shape number (one of the matching pair)
+	public int GetShapeOfDifficulty(int difficulty){
+		int tempShape = difficultyOrder[difficulty];
+		Debug.Log("diffOfder:" + tempShape);
+		tempShape = (tempShape*2) - 1 - Random.Range(0, 2);
+
+		Debug.Log("Tmep:" + tempShape);
+		return tempShape;
 	}
 
 	public bool IsLeftCorrect(){
@@ -240,8 +260,18 @@ public class ShapeManager_Script : MonoBehaviour {
 	}
 
 	public void ToggleAnswerShapes(bool on){
-		leftShape.SetActive(on);
-		rightShape.SetActive(on);
+		//leftShape.SetActive(on);
+		//rightShape.SetActive(on);
+
+		if(on){
+			leftShape_Tween.PlayForward();
+			rightShape_Tween.PlayForward();
+		}
+
+		else{
+			leftShape_Tween.PlayReverse();
+			rightShape_Tween.PlayReverse();
+		}
 
 	}
 }

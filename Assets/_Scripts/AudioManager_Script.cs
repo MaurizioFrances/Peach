@@ -9,6 +9,7 @@ public class AudioManager_Script : MonoBehaviour {
 	public AudioSource sfxAnswerWrong;
 
 	private bool readyMusicSwitch = false;
+	private bool backToIntroMusic = false;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,10 @@ public class AudioManager_Script : MonoBehaviour {
 				StartMusicMainLoop();
 			}
 		}
+
+		else if(backToIntroMusic){
+			MainMusicFadeOut();
+		}
 		
 	
 	}
@@ -35,6 +40,11 @@ public class AudioManager_Script : MonoBehaviour {
 	public void StartMusicSwitch(){
 		musicIntro.loop = false;
 		readyMusicSwitch = true;
+	}
+
+	public void StartMusicSwitchBack(){
+		readyMusicSwitch = false;
+		backToIntroMusic = true;
 	}
 
 	public void StartMusicMainLoop(){
@@ -62,5 +72,24 @@ public class AudioManager_Script : MonoBehaviour {
 		musicMain.mute = false;
 		sfxAnswerCorrect.mute = false;
 		sfxAnswerWrong.mute = false;
+	}
+
+	void MainMusicFadeOut(){
+		if(musicMain.volume > 0.1){
+			musicMain.volume -= 0.9f * Time.deltaTime;
+		}
+
+		else{
+			backToIntroMusic = false;
+			musicIntro.loop = true;
+			musicMain.Stop();
+			musicMain.volume = 1;
+
+			if(!musicIntro.isPlaying){
+				musicIntro.Play();
+			}
+			Debug.Log("PLAT INTRO");
+
+		}
 	}
 }

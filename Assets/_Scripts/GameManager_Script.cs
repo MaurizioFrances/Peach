@@ -3,16 +3,15 @@ using System.Collections;
 
 public class GameManager_Script : MonoBehaviour {
 
-	enum GameStates{Menu, Play, Gameover};
+	enum GameStates{Menu, Info, Instruction, Play, Pause, Gameover};
     
     private GameStates currentGameState = GameStates.Menu;
+    private bool ShowInstruction = true;
 
 	private ShapeManager_Script SMS;
 	private ColourManager_Script CMS;
 	private AudioManager_Script AMS;
 	private SaveLoad_Script SLS;
-
-	private Tutorial_Script TTS;
 
 	private int nextCorrectAnswer = 0; //The next correct shape number
 	private int nextWrongShape = 0; //The next incorrect shape number (will be +1 or -1 the correct number)
@@ -21,6 +20,7 @@ public class GameManager_Script : MonoBehaviour {
 	private int highScore = 0;
 	public UILabel scoreLbl;
 	public UILabel highScoreLbl;
+
 
 	public UISlider countdownUI;
 	public UISlider countdownUI2;
@@ -31,11 +31,13 @@ public class GameManager_Script : MonoBehaviour {
 	//REPLACE WITH STATE MANAGER
 	private bool gameover = true;
 	private bool shouldStart = true;
+	private bool pause = false;
+
+	private bool audio = true;
 
 	private int amountOfShapes;
 
-	private bool audio = true;
-	private bool pause = false;
+	
 
 	private GameObject Panel_Menu;
 	private UITweener PanelTween_Menu;
@@ -45,6 +47,7 @@ public class GameManager_Script : MonoBehaviour {
 
 	private GameObject Panel_Gameplay;
 	private UITweener PanelTween_Gameplay;
+	private UITweener PanelTween_Gameplay_NonGameover;
 
 	private GameObject Panel_Pause;
 	private UITweener PanelTween_Pause;
@@ -52,13 +55,34 @@ public class GameManager_Script : MonoBehaviour {
 	private GameObject Panel_Darklayer;
 	private UITweener PanelTween_Darklayer;
 
+	private GameObject Panel_Info;
+	private UITweener PanelTween_Info;
+
 	private GameObject Panel_Debug;
 	private UITweener PanelTween_Debug;
 	private string debugTxt = "";
 	private UITextList debugTextlist;
 
-	private GameObject Panel_Tutorial;
-	private UITweener PanelTween_Tutorial;
+	private UITweener Instruction_Text;
+	private UITweener Instruction_Shape_L;
+	private UITweener Instruction_Shape_R;
+
+	private TweenPosition shapes_TweenPos;
+	private TweenScale shapes_TweenScale;
+	private TweenPosition score_TweenPos;
+	private TweenPosition gameoverText_TweenPos;
+	private TweenPosition twitterBtn_TweenPos;
+	private UITweener chosenShapeText_L;
+	private UITweener chosenShapeText_R;
+
+	private TweenAlpha score_TweenAlpha;
+	private TweenAlpha highscore_TweenAlpha;
+
+
+	public int[] difficultyTier; //How much score is needed to get to this tier.
+	public int[] difficultyRange; //How many puzzles are allowed in this tier.
+
+	private int currentDifficulty = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -71,6 +95,7 @@ public class GameManager_Script : MonoBehaviour {
 
 		Panel_Gameplay = GameObject.Find("Panel_Gameplay");
 		PanelTween_Gameplay = Panel_Gameplay.GetComponent<UITweener>();
+		PanelTween_Gameplay_NonGameover = GameObject.Find("NonGameover_Container").GetComponent<UITweener>();
 
 		Panel_Pause = GameObject.Find("Panel_Pause");
 		PanelTween_Pause = Panel_Pause.GetComponent<UITweener>();
@@ -78,18 +103,32 @@ public class GameManager_Script : MonoBehaviour {
 		Panel_Darklayer = GameObject.Find("Panel_Darklayer");
 		PanelTween_Darklayer = Panel_Darklayer.GetComponent<UITweener>();
 
+		Panel_Info = GameObject.Find("Panel_Info");
+		PanelTween_Info = Panel_Info.GetComponent<UITweener>();
+
 		Panel_Debug = GameObject.Find("Panel_Debug");
 		PanelTween_Debug = Panel_Debug.GetComponent<UITweener>();
 
-		Panel_Tutorial = GameObject.Find("Panel_Tutorial");
-		PanelTween_Tutorial = Panel_Tutorial.GetComponent<UITweener>();
-
 		debugTextlist = GameObject.Find("Debug_Lbl").GetComponent<UITextList>();;
+
+		Instruction_Text = GameObject.Find("Instruction_Text").GetComponent<UITweener>();
+		Instruction_Shape_L = GameObject.Find("Shape_Left").GetComponent<UITweener>();
+		Instruction_Shape_R = GameObject.Find("Shape_Right").GetComponent<UITweener>();
+
+		shapes_TweenPos = GameObject.Find("Panel_Shapes").GetComponent<TweenPosition>();
+		shapes_TweenScale = GameObject.Find("Panel_Shapes").GetComponent<TweenScale>();
+		score_TweenPos = GameObject.Find("Scores_Container").GetComponent<TweenPosition>();
+		gameoverText_TweenPos = GameObject.Find("GameoverSprite").GetComponent<TweenPosition>();
+		twitterBtn_TweenPos = GameObject.Find("Control_TwitterButton").GetComponent<TweenPosition>();
+		chosenShapeText_L = GameObject.Find("ChosenShape_Text_L").GetComponent<UITweener>();
+		chosenShapeText_R = GameObject.Find("ChosenShape_Text_R").GetComponent<UITweener>();
+
+		score_TweenAlpha = scoreLbl.GetComponent<TweenAlpha>();
+		highscore_TweenAlpha = highScoreLbl.GetComponent<TweenAlpha>();
 
 		SMS = this.GetComponent<ShapeManager_Script>();
 		CMS = this.GetComponent<ColourManager_Script>();
 		SLS = this.GetComponent<SaveLoad_Script>();
-		TTS = this.GetComponent<Tutorial_Script>();
 
 		AMS = GameObject.Find("AudioManager").GetComponent<AudioManager_Script>();
 
@@ -115,25 +154,61 @@ public class GameManager_Script : MonoBehaviour {
 			}
 		}
 
-		if( (!gameover) && (!pause) ){
+	/*	if( (!gameover) && (!pause) ){
+			CountdownTimer();
+		}
+	*/
+		if(currentGameState == GameStates.Play){
+			Debug.Log("WHY IS THIS STILL HERE:" + currentGameState);
 			CountdownTimer();
 		}
 	}
 
 	public void StartGame(){
-		if(shouldStart){
+			Debug.Log("STARTGAME");
+		//if(shouldStart){
 			SMS.ToggleAnswerShapes(true);
 
-			currentGameState = GameStates.Play;
-			SetCorrectAnswer();
-			gameover = false;
+			if(ShowInstruction){
+				currentGameState = GameStates.Instruction;
+
+				nextCorrectAnswer = 50;
+				SetWrongShape();
+
+				Instruction_Text.PlayForward();
+				Instruction_Shape_L.Play();
+				Instruction_Shape_R.Play();
+			}
+
+			else{
+				currentGameState = GameStates.Play;
+				SetCorrectAnswer();
+			}
+			
+		//	gameover = false;
+		//}
+	}
+
+	void CheckDifficulty(){
+		for(int i = currentDifficulty; i<difficultyTier.Length-1;i++){
+			if(score>difficultyTier[i+1]){
+				currentDifficulty++;
+			}
 		}
+
+		Debug.Log("CurrentDiff: " + currentDifficulty);
 	}
 
 	//Select the next correct shape.
 	void SetCorrectAnswer(){
-		//nextCorrectAnswer = Random.Range(0, 2);
-		nextCorrectAnswer = Random.Range(0, amountOfShapes);
+		CheckDifficulty();
+
+		int randomDifficulty = Random.Range(0, difficultyRange[currentDifficulty]);
+		nextCorrectAnswer = SMS.GetShapeOfDifficulty(randomDifficulty);
+		Debug.Log("ShapeDiff: " + randomDifficulty + "    Shape: " + nextCorrectAnswer);
+		//nextCorrectAnswer = SMS.GetShapeOfDifficulty(Random.Range(0, difficultyRange[currentDifficulty]));
+
+		//nextCorrectAnswer = Random.Range(0, amountOfShapes);
 		SetWrongShape();
 	}
 
@@ -202,7 +277,21 @@ public class GameManager_Script : MonoBehaviour {
 	}
 
 	public void ChooseLeft(){
+		/*
 		if((!gameover) && (!pause)){
+			if(SMS.IsLeftCorrect()){
+				//MoveLeftFish();
+				ChooseAnswer(true);
+			}
+
+			else{
+				ChooseAnswer(false);
+			}
+
+		}
+		*/
+
+		if(currentGameState == GameStates.Play || currentGameState == GameStates.Instruction){
 			if(SMS.IsLeftCorrect()){
 				//MoveLeftFish();
 				ChooseAnswer(true);
@@ -216,6 +305,7 @@ public class GameManager_Script : MonoBehaviour {
 	}
 
 	public void ChooseRight(){
+		/*
 		if((!gameover) && (!pause)){
 
 			if(SMS.IsRightCorrect()){
@@ -229,10 +319,36 @@ public class GameManager_Script : MonoBehaviour {
 
 
 		}
+		*/
+
+		if(currentGameState == GameStates.Play || currentGameState == GameStates.Instruction){
+			if(SMS.IsRightCorrect()){
+				//MoveLeftFish();
+				ChooseAnswer(true);
+			}
+
+			else{
+				ChooseAnswer(false);
+			}
+
+		}
 	}
 
 	void ChooseAnswer(bool wasCorrect){
 		if(wasCorrect){
+
+			if(currentGameState == GameStates.Instruction){
+				ShowInstruction = false;
+				currentGameState = GameStates.Play;
+
+				Instruction_Text.PlayReverse();
+
+				Instruction_Shape_L.ResetToBeginning();
+				Instruction_Shape_R.ResetToBeginning();
+
+				Instruction_Shape_L.enabled = false;
+				Instruction_Shape_R.enabled = false;
+			}
 
 			//Do Correct Stats here
 			RecordShapeStats(nextCorrectAnswer,(maxCountdown - currentCountdown),true,false);
@@ -250,6 +366,8 @@ public class GameManager_Script : MonoBehaviour {
 			RecordShapeStats(nextCorrectAnswer,(maxCountdown - currentCountdown),false,false);
 			
 			GameOver();
+
+			ShowGameoverShapeText();
 		}
 
 		UpdateScore();
@@ -259,6 +377,7 @@ public class GameManager_Script : MonoBehaviour {
 
 	void UpdateScore(){
 		scoreLbl.text = ""+score;
+
 
 	}
 
@@ -403,6 +522,7 @@ public class GameManager_Script : MonoBehaviour {
 
 	//Timer stuff//
 	void CountdownTimer(){
+		Debug.Log("COUNTDOWN TIMER");
 		currentCountdown -= Time.deltaTime;
 
 		if(currentCountdown<0){
@@ -435,23 +555,89 @@ public class GameManager_Script : MonoBehaviour {
 
 	void GameOver(){
 
+		if(ShowInstruction){
+			Instruction_Text.PlayReverse();
+			Instruction_Shape_L.enabled = false;
+			Instruction_Shape_R.enabled = false;
+		}
+
+		currentGameState = GameStates.Gameover;
+
 		AMS.PlayAnswerWrong();
 
 		UpdateHighscore();
-		shouldStart = false;
+	//	shouldStart = false;
 		Debug.Log("WRONG NOOB");
-		gameover = true;
+	//	gameover = true;
 	//	gameOverLbl.SetActive(true);
 	//	restartBtn.SetActive(true);
 
+		//PanelTween_Gameplay.PlayReverse();
+		PanelTween_Gameplay_NonGameover.PlayForward();
+
 		PanelTween_Darklayer.PlayForward();
 		PanelTween_Gameover.PlayForward();
+
+		shapes_TweenPos.PlayForward();
+		shapes_TweenScale.PlayForward();
+		score_TweenPos.PlayForward();
+		gameoverText_TweenPos.PlayForward();
+		twitterBtn_TweenPos.PlayForward();
+
+		score_TweenAlpha.PlayForward();
+		highscore_TweenAlpha.PlayForward();
+
+		
+	}
+
+	void ShowGameoverShapeText(){
+		//Player chose the R shape
+		if(SMS.IsLeftCorrect()){
+			chosenShapeText_R.PlayForward();
+		}
+
+		//Player chose L shape
+		else{
+			chosenShapeText_L.PlayForward();
+		}
+
+	}
+
+	void ClearGameoverShapeText(){
+		chosenShapeText_L.PlayReverse();
+		chosenShapeText_R.PlayReverse();
 	}
 
 	public void RestartGame(){
-		shouldStart = true;
+
+	/*	if(ShowInstruction){
+			currentGameState = GameStates.Instruction;
+		}
+
+		else{
+			currentGameState = GameStates.Play;
+		}
+	*/	
+	//	shapes_TweenPos.ResetToBeginning();
+	//	shapes_TweenScale.ResetToBeginning();
+
+		PanelTween_Gameplay_NonGameover.PlayReverse();
+
+		shapes_TweenPos.PlayReverse();
+		shapes_TweenScale.PlayReverse();
+		score_TweenPos.PlayReverse();
+		gameoverText_TweenPos.PlayReverse();
+		twitterBtn_TweenPos.PlayReverse();
+
+		score_TweenAlpha.PlayReverse();
+		highscore_TweenAlpha.PlayReverse();
+
+	//	PanelTween_Gameplay.PlayForward();
+	//	shouldStart = true;
 		PanelTween_Darklayer.PlayReverse();
 		PanelTween_Gameover.PlayReverse();
+
+		ClearGameoverShapeText();
 
 	//	gameOverLbl.SetActive(false);
 	//	restartBtn.SetActive(false);
@@ -462,8 +648,11 @@ public class GameManager_Script : MonoBehaviour {
 		//currentCountdown = maxCountdown;
 		ResetTimer();
 
+		currentDifficulty = 0;
 		score = 0;
 		UpdateScore();
+
+		StartGame();
 
 	}
 
@@ -471,19 +660,18 @@ public class GameManager_Script : MonoBehaviour {
 		PanelTween_Menu.PlayForward();
 		PanelTween_Gameplay.PlayForward();
 		AMS.StartMusicSwitch();
-	}
 
-	public void ShowTute(){
-		PanelTween_Tutorial.PlayForward();
-		TTS.StartAnim();
-	}
+		ResetTimer();
 
-	public void HideTute(){
-		PanelTween_Tutorial.PlayReverse();
-		TTS.StopAnim();
+		currentDifficulty = 0;
+		score = 0;
+		UpdateScore();
+
+		Invoke("StartGame",PanelTween_Menu.duration);
 	}
 
 	public void TogglePause(){
+		/*
 		pause = !pause;
 
 		if(pause){
@@ -492,6 +680,30 @@ public class GameManager_Script : MonoBehaviour {
 		}
 
 		else{
+			PanelTween_Pause.PlayReverse();
+			PanelTween_Darklayer.PlayReverse();
+		}
+		*/
+
+		if(currentGameState == GameStates.Play || currentGameState == GameStates.Instruction){
+
+			currentGameState = GameStates.Pause;
+
+			PanelTween_Pause.PlayForward();
+			PanelTween_Darklayer.PlayForward();
+		}
+
+		else if(currentGameState == GameStates.Pause){
+
+			if(ShowInstruction){
+				currentGameState = GameStates.Instruction;
+			}
+			else{
+				currentGameState = GameStates.Play;
+			}
+
+			
+
 			PanelTween_Pause.PlayReverse();
 			PanelTween_Darklayer.PlayReverse();
 		}
@@ -510,5 +722,38 @@ public class GameManager_Script : MonoBehaviour {
 		else{
 			AMS.MuteSound();
 		}
+	}
+
+	public void BackToMainMenu(){
+		currentGameState = GameStates.Menu;
+
+		SMS.ToggleAnswerShapes(false);
+		AMS.StartMusicSwitchBack();
+
+		PanelTween_Menu.PlayReverse();
+		PanelTween_Gameplay.PlayReverse();
+
+		PanelTween_Pause.PlayReverse();
+		PanelTween_Darklayer.PlayReverse();
+
+	}
+
+	public void ToggleInfo(){
+		if(currentGameState == GameStates.Menu){
+
+			currentGameState = GameStates.Info;
+
+			PanelTween_Info.PlayForward();
+			PanelTween_Info.PlayForward();
+		}
+
+		else if(currentGameState == GameStates.Info){
+
+			currentGameState = GameStates.Menu;
+
+			PanelTween_Info.PlayReverse();
+			PanelTween_Info.PlayReverse();
+		}
+
 	}
 }
