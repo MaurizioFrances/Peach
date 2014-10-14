@@ -12,6 +12,7 @@ public class GameManager_Script : MonoBehaviour {
 	private ColourManager_Script CMS;
 	private AudioManager_Script AMS;
 	private SaveLoad_Script SLS;
+	private Twitter_Script TWS;
 
 	private int nextCorrectAnswer = 0; //The next correct shape number
 	private int nextWrongShape = 0; //The next incorrect shape number (will be +1 or -1 the correct number)
@@ -129,6 +130,7 @@ public class GameManager_Script : MonoBehaviour {
 		SMS = this.GetComponent<ShapeManager_Script>();
 		CMS = this.GetComponent<ColourManager_Script>();
 		SLS = this.GetComponent<SaveLoad_Script>();
+		TWS = this.GetComponent<Twitter_Script>();
 
 		AMS = GameObject.Find("AudioManager").GetComponent<AudioManager_Script>();
 
@@ -162,6 +164,38 @@ public class GameManager_Script : MonoBehaviour {
 			Debug.Log("WHY IS THIS STILL HERE:" + currentGameState);
 			CountdownTimer();
 		}
+
+		//DO NATIVE BACK BUTTON STUFF HERE
+		#if UNITY_ANDROID || UNITY_WP8
+
+			 if (Input.GetKeyUp(KeyCode.Escape)){
+
+			 	Debug.Log("DEBUG: ESC");
+			 	//If in the game menu, exit the game
+			 	if(currentGameState == GameStates.Menu){
+			 		Debug.Log("DEBUG: QUIT");
+			 		Application.Quit();
+			 	}
+
+			 	else if(currentGameState == GameStates.Info){
+			 		Debug.Log("DEBUG: INFO");
+			 		ToggleInfo();
+			 	}
+
+			 	else if(currentGameState == GameStates.Pause){
+			 		Debug.Log("DEBUG: PAUSE");
+			 		TogglePause();
+			 	}
+
+			 	//If playing the game (or gameover or intructions)
+			 	else{
+			 		Debug.Log("DEBUG: BACK");
+			 		BackToMainMenu();
+			 	}
+
+            }
+
+		#endif
 	}
 
 	public void StartGame(){
@@ -725,16 +759,39 @@ public class GameManager_Script : MonoBehaviour {
 	}
 
 	public void BackToMainMenu(){
+		//If going Home from Pause
+		if(currentGameState == GameStates.Pause){
+			PanelTween_Pause.PlayReverse();
+		}
+
+		//If going Home from Gameover
+		else if(currentGameState == GameStates.Gameover){
+			//PanelTween_Gameplay_NonGameover.PlayReverse();
+
+			shapes_TweenPos.PlayReverse();
+			shapes_TweenScale.PlayReverse();
+			score_TweenPos.PlayReverse();
+			gameoverText_TweenPos.PlayReverse();
+			twitterBtn_TweenPos.PlayReverse();
+
+			score_TweenAlpha.PlayReverse();
+			highscore_TweenAlpha.PlayReverse();
+			PanelTween_Gameover.PlayReverse();
+
+		//	PanelTween_Gameover.AddOnFinished( ToggleInfo() );
+
+			EventDelegate.Add (PanelTween_Gameover.onFinished, PanelTween_Gameplay_NonGameover.PlayReverse, true);
+		//	EventDelegate.Remove(PanelTween_Gameplay_NonGameover.onFinished)
+		}
+
 		currentGameState = GameStates.Menu;
+
+		PanelTween_Menu.PlayReverse();
+		PanelTween_Gameplay.PlayReverse();		
+		PanelTween_Darklayer.PlayReverse();
 
 		SMS.ToggleAnswerShapes(false);
 		AMS.StartMusicSwitchBack();
-
-		PanelTween_Menu.PlayReverse();
-		PanelTween_Gameplay.PlayReverse();
-
-		PanelTween_Pause.PlayReverse();
-		PanelTween_Darklayer.PlayReverse();
 
 	}
 
@@ -755,5 +812,9 @@ public class GameManager_Script : MonoBehaviour {
 			PanelTween_Info.PlayReverse();
 		}
 
+	}
+
+	public void ShareToTwitter(){
+		TWS.ShareScore(score);
 	}
 }
