@@ -147,6 +147,10 @@ public class GameManager_Script : MonoBehaviour {
 
 		LoadHighScore();
 		UpdateHighscore();
+
+		if(currentGameState == GameStates.Menu){
+			GAS.SetScreen("Menu");
+		}
 	}
 
 	void Update(){
@@ -790,6 +794,7 @@ public class GameManager_Script : MonoBehaviour {
 		//If going Home from Gameover
 		else if(currentGameState == GameStates.Gameover){
 			//PanelTween_Gameplay_NonGameover.PlayReverse();
+			ClearGameoverShapeText();
 
 			shapes_TweenPos.PlayReverse();
 			shapes_TweenScale.PlayReverse();
