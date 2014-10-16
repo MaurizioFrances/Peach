@@ -13,6 +13,7 @@ public class GameManager_Script : MonoBehaviour {
 	private AudioManager_Script AMS;
 	private SaveLoad_Script SLS;
 	private Twitter_Script TWS;
+	private Analytics_Script GAS;
 
 	private int nextCorrectAnswer = 0; //The next correct shape number
 	private int nextWrongShape = 0; //The next incorrect shape number (will be +1 or -1 the correct number)
@@ -131,6 +132,7 @@ public class GameManager_Script : MonoBehaviour {
 		CMS = this.GetComponent<ColourManager_Script>();
 		SLS = this.GetComponent<SaveLoad_Script>();
 		TWS = this.GetComponent<Twitter_Script>();
+		GAS = this.GetComponent<Analytics_Script>();
 
 		AMS = GameObject.Find("AudioManager").GetComponent<AudioManager_Script>();
 
@@ -204,6 +206,8 @@ public class GameManager_Script : MonoBehaviour {
 			SMS.ToggleAnswerShapes(true);
 
 			if(ShowInstruction){
+				GAS.SetScreen("Instruction");
+
 				currentGameState = GameStates.Instruction;
 
 				nextCorrectAnswer = 50;
@@ -215,6 +219,8 @@ public class GameManager_Script : MonoBehaviour {
 			}
 
 			else{
+				GAS.SetScreen("Play");
+
 				currentGameState = GameStates.Play;
 				SetCorrectAnswer();
 			}
@@ -372,6 +378,9 @@ public class GameManager_Script : MonoBehaviour {
 		if(wasCorrect){
 
 			if(currentGameState == GameStates.Instruction){
+
+				GAS.SetScreen("Play");
+
 				ShowInstruction = false;
 				currentGameState = GameStates.Play;
 
@@ -385,7 +394,8 @@ public class GameManager_Script : MonoBehaviour {
 			}
 
 			//Do Correct Stats here
-			RecordShapeStats(nextCorrectAnswer,(maxCountdown - currentCountdown),true,false);
+			//RecordShapeStats(nextCorrectAnswer,(maxCountdown - currentCountdown),true,false);
+			GAS.SetShapeStats(nextCorrectAnswer,true,false);
 
 			AMS.PlayAnswerCorrect();
 			Debug.Log("CORRECT");
@@ -397,7 +407,8 @@ public class GameManager_Script : MonoBehaviour {
 		else{
 
 			//Do fail stats here
-			RecordShapeStats(nextCorrectAnswer,(maxCountdown - currentCountdown),false,false);
+			//RecordShapeStats(nextCorrectAnswer,(maxCountdown - currentCountdown),false,false);
+			GAS.SetShapeStats(nextCorrectAnswer,false,false);
 			
 			GameOver();
 
@@ -561,7 +572,9 @@ public class GameManager_Script : MonoBehaviour {
 
 		if(currentCountdown<0){
 			//Took too long shape stats
-			RecordShapeStats(nextCorrectAnswer,(maxCountdown - currentCountdown),false,true);
+			//RecordShapeStats(nextCorrectAnswer,(maxCountdown - currentCountdown),false,true);
+			GAS.SetShapeStats(nextCorrectAnswer,false,true);
+
 			GameOver();
 		}
 
@@ -588,6 +601,9 @@ public class GameManager_Script : MonoBehaviour {
 	//Timer stuff//
 
 	void GameOver(){
+
+		GAS.SetScreen("Gameover");
+		GAS.SetScore(score);
 
 		if(ShowInstruction){
 			Instruction_Text.PlayReverse();
@@ -691,6 +707,8 @@ public class GameManager_Script : MonoBehaviour {
 	}
 
 	public void StartFromMenu(){
+
+
 		PanelTween_Menu.PlayForward();
 		PanelTween_Gameplay.PlayForward();
 		AMS.StartMusicSwitch();
@@ -721,6 +739,7 @@ public class GameManager_Script : MonoBehaviour {
 
 		if(currentGameState == GameStates.Play || currentGameState == GameStates.Instruction){
 
+			GAS.SetScreen("Pause");
 			currentGameState = GameStates.Pause;
 
 			PanelTween_Pause.PlayForward();
@@ -730,9 +749,11 @@ public class GameManager_Script : MonoBehaviour {
 		else if(currentGameState == GameStates.Pause){
 
 			if(ShowInstruction){
+				GAS.SetScreen("Instruction");
 				currentGameState = GameStates.Instruction;
 			}
 			else{
+				GAS.SetScreen("Play");
 				currentGameState = GameStates.Play;
 			}
 
@@ -759,6 +780,8 @@ public class GameManager_Script : MonoBehaviour {
 	}
 
 	public void BackToMainMenu(){
+		GAS.SetScreen("Menu");
+
 		//If going Home from Pause
 		if(currentGameState == GameStates.Pause){
 			PanelTween_Pause.PlayReverse();
@@ -798,6 +821,7 @@ public class GameManager_Script : MonoBehaviour {
 	public void ToggleInfo(){
 		if(currentGameState == GameStates.Menu){
 
+			GAS.SetScreen("Info");
 			currentGameState = GameStates.Info;
 
 			PanelTween_Info.PlayForward();
@@ -805,7 +829,7 @@ public class GameManager_Script : MonoBehaviour {
 		}
 
 		else if(currentGameState == GameStates.Info){
-
+			GAS.SetScreen("Menu");
 			currentGameState = GameStates.Menu;
 
 			PanelTween_Info.PlayReverse();
@@ -815,6 +839,7 @@ public class GameManager_Script : MonoBehaviour {
 	}
 
 	public void ShareToTwitter(){
+		GAS.SetShare(score);
 		TWS.ShareScore(score);
 	}
 }
