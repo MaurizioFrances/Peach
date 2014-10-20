@@ -14,6 +14,7 @@ public class GameManager_Script : MonoBehaviour {
 	private SaveLoad_Script SLS;
 	private Twitter_Script TWS;
 	private Analytics_Script GAS;
+	private AdMob_Script ADS;
 
 	private int nextCorrectAnswer = 0; //The next correct shape number
 	private int nextWrongShape = 0; //The next incorrect shape number (will be +1 or -1 the correct number)
@@ -133,6 +134,8 @@ public class GameManager_Script : MonoBehaviour {
 		SLS = this.GetComponent<SaveLoad_Script>();
 		TWS = this.GetComponent<Twitter_Script>();
 		GAS = this.GetComponent<Analytics_Script>();
+
+		ADS = Camera.main.GetComponent<AdMob_Script>();
 
 		AMS = GameObject.Find("AudioManager").GetComponent<AudioManager_Script>();
 
@@ -641,7 +644,7 @@ public class GameManager_Script : MonoBehaviour {
 		score_TweenAlpha.PlayForward();
 		highscore_TweenAlpha.PlayForward();
 
-		
+		ADS.ShowAd();
 	}
 
 	void ShowGameoverShapeText(){
@@ -663,6 +666,8 @@ public class GameManager_Script : MonoBehaviour {
 	}
 
 	public void RestartGame(){
+
+		ADS.HideAd();
 
 	/*	if(ShowInstruction){
 			currentGameState = GameStates.Instruction;
@@ -794,6 +799,8 @@ public class GameManager_Script : MonoBehaviour {
 		//If going Home from Gameover
 		else if(currentGameState == GameStates.Gameover){
 			//PanelTween_Gameplay_NonGameover.PlayReverse();
+			ADS.HideAd();
+
 			ClearGameoverShapeText();
 
 			shapes_TweenPos.PlayReverse();
