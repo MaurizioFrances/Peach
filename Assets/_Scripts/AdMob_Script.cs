@@ -135,9 +135,14 @@ public class AdMob_Script : MonoBehaviour
                 .Build();
         */
 
-        return new AdRequest.Builder()
+        /* return new AdRequest.Builder()
                 .AddTestDevice(AdRequest.TestDeviceSimulator)
                 .AddTestDevice("6A47814CF16EBC5493285D4C591C5DC2")
+                .Build();
+        */
+
+                return new AdRequest.Builder()
+                .AddKeyword("game")
                 .Build();
 
     }

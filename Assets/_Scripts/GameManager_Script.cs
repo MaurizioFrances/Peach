@@ -31,16 +31,9 @@ public class GameManager_Script : MonoBehaviour {
 	public float maxCountdown;
 	private float currentCountdown;
 
-	//REPLACE WITH STATE MANAGER
-	private bool gameover = true;
-	private bool shouldStart = true;
-	private bool pause = false;
-
 	private bool audio = true;
 
 	private int amountOfShapes;
-
-	
 
 	private GameObject Panel_Menu;
 	private UITweener PanelTween_Menu;
@@ -60,11 +53,6 @@ public class GameManager_Script : MonoBehaviour {
 
 	private GameObject Panel_Info;
 	private UITweener PanelTween_Info;
-
-	private GameObject Panel_Debug;
-	private UITweener PanelTween_Debug;
-	private string debugTxt = "";
-	private UITextList debugTextlist;
 
 	private UITweener Instruction_Text;
 	private UITweener Instruction_Shape_L;
@@ -109,17 +97,16 @@ public class GameManager_Script : MonoBehaviour {
 		Panel_Info = GameObject.Find("Panel_Info");
 		PanelTween_Info = Panel_Info.GetComponent<UITweener>();
 
-		Panel_Debug = GameObject.Find("Panel_Debug");
-		PanelTween_Debug = Panel_Debug.GetComponent<UITweener>();
-
-		debugTextlist = GameObject.Find("Debug_Lbl").GetComponent<UITextList>();;
-
 		Instruction_Text = GameObject.Find("Instruction_Text").GetComponent<UITweener>();
 		Instruction_Shape_L = GameObject.Find("Shape_Left").GetComponent<UITweener>();
 		Instruction_Shape_R = GameObject.Find("Shape_Right").GetComponent<UITweener>();
 
-		shapes_TweenPos = GameObject.Find("Panel_Shapes").GetComponent<TweenPosition>();
-		shapes_TweenScale = GameObject.Find("Panel_Shapes").GetComponent<TweenScale>();
+		//shapes_TweenPos = GameObject.Find("Panel_Shapes").GetComponent<TweenPosition>();
+		//shapes_TweenScale = GameObject.Find("Panel_Shapes").GetComponent<TweenScale>();
+
+		shapes_TweenPos = GameObject.Find("Shape_Move_Container").GetComponent<TweenPosition>();
+		shapes_TweenScale = GameObject.Find("Shape_Container").GetComponent<TweenScale>();
+
 		score_TweenPos = GameObject.Find("Scores_Container").GetComponent<TweenPosition>();
 		gameoverText_TweenPos = GameObject.Find("GameoverSprite").GetComponent<TweenPosition>();
 		twitterBtn_TweenPos = GameObject.Find("Control_TwitterButton").GetComponent<TweenPosition>();
@@ -141,11 +128,6 @@ public class GameManager_Script : MonoBehaviour {
 
 		amountOfShapes = SMS.GetAmountOfShapes();
 
-	//	gameOverLbl.SetActive(false);
-	//	restartBtn.SetActive(false);
-
-		//SetCorrectAnswer();
-
 		currentCountdown = maxCountdown;
 
 		LoadHighScore();
@@ -165,10 +147,6 @@ public class GameManager_Script : MonoBehaviour {
 			}
 		}
 
-	/*	if( (!gameover) && (!pause) ){
-			CountdownTimer();
-		}
-	*/
 		if(currentGameState == GameStates.Play){
 			Debug.Log("WHY IS THIS STILL HERE:" + currentGameState);
 			CountdownTimer();
@@ -209,7 +187,6 @@ public class GameManager_Script : MonoBehaviour {
 
 	public void StartGame(){
 			Debug.Log("STARTGAME");
-		//if(shouldStart){
 			SMS.ToggleAnswerShapes(true);
 
 			if(ShowInstruction){
@@ -232,8 +209,6 @@ public class GameManager_Script : MonoBehaviour {
 				SetCorrectAnswer();
 			}
 			
-		//	gameover = false;
-		//}
 	}
 
 	void CheckDifficulty(){
@@ -324,19 +299,6 @@ public class GameManager_Script : MonoBehaviour {
 	}
 
 	public void ChooseLeft(){
-		/*
-		if((!gameover) && (!pause)){
-			if(SMS.IsLeftCorrect()){
-				//MoveLeftFish();
-				ChooseAnswer(true);
-			}
-
-			else{
-				ChooseAnswer(false);
-			}
-
-		}
-		*/
 
 		if(currentGameState == GameStates.Play || currentGameState == GameStates.Instruction){
 			if(SMS.IsLeftCorrect()){
@@ -352,21 +314,6 @@ public class GameManager_Script : MonoBehaviour {
 	}
 
 	public void ChooseRight(){
-		/*
-		if((!gameover) && (!pause)){
-
-			if(SMS.IsRightCorrect()){
-				//MoveRightFish();
-				ChooseAnswer(true);
-			}
-
-			else{
-				ChooseAnswer(false);
-			}
-
-
-		}
-		*/
 
 		if(currentGameState == GameStates.Play || currentGameState == GameStates.Instruction){
 			if(SMS.IsRightCorrect()){
@@ -453,124 +400,6 @@ public class GameManager_Script : MonoBehaviour {
 		SLS.SaveInt("highscore", highScore);
 	}
 
-	void RecordShapeStats(int shapeNumber, float timeTaken, bool correct, bool timeUp){
-		int tempAmount;
-		float tempTime;
-		int tempFinalScore;
-
-		//If clicked an answer
-		if(!timeUp){
-			//If the answer was correct
-			if(correct){
-				tempAmount = SLS.LoadInt("shape" + shapeNumber + "_correct_amount");
-				tempTime = SLS.LoadFloat("shape" + shapeNumber + "_correct_totaltime");
-
-				tempAmount++;
-				tempTime = tempTime + timeTaken;
-
-				SLS.SaveInt("shape" + shapeNumber + "_correct_amount", tempAmount);
-				SLS.SaveFloat("shape" + shapeNumber + "_correct_totaltime", tempTime);
-
-			}
-
-			//If the answer was wrong
-			else{
-				tempAmount = SLS.LoadInt("shape" + shapeNumber + "_incorrect_amount");
-				tempTime = SLS.LoadFloat("shape" + shapeNumber + "_incorrect_totaltime");
-				tempFinalScore = SLS.LoadInt("finalscore_" + score);
-
-				tempAmount++;
-				tempTime = tempTime + timeTaken;
-				tempFinalScore++;
-
-				SLS.SaveInt("shape" + shapeNumber + "_incorrect_amount", tempAmount);
-				SLS.SaveFloat("shape" + shapeNumber + "_incorrect_totaltime", tempTime);
-				SLS.SaveInt("finalscore_" + score, tempFinalScore);
-
-			}
-		}
-
-		//Took too long to answer
-		else{
-				tempAmount = SLS.LoadInt("shape" + shapeNumber + "_timeup_amount");
-				tempFinalScore = SLS.LoadInt("finalscore_" + score);
-
-				tempAmount++;
-				tempFinalScore++;
-
-				SLS.SaveInt("shape" + shapeNumber + "_timeup_amount", tempAmount);
-				SLS.SaveInt("finalscore_" + score, tempFinalScore);
-
-		}
-	}
-
-
-	public void ShowDebug(){
-		PrintShapeStats();
-		PanelTween_Debug.PlayForward();
-	}
-
-	public void HideDebug(){
-		PanelTween_Debug.PlayReverse();
-	}
-
-	void PrintShapeStats(){
-		debugTxt = "";
-
-		debugTxt += "HIGHSCORE:" + SLS.LoadInt("highscore") + "\n\n";
-
-		/*for(int i=0; i<amountOfShapes; i++){
-			debugTxt += "SHAPE" + i + " - Correct:" +
-			SLS.LoadInt("shape" + i + "_correct_amount") +
-			"     Total Time:" + 
-			SLS.LoadFloat("shape" + i + "_correct_totaltime") +
-			"     Incorrect:" + 
-			SLS.LoadInt("shape" + i + "_incorrect_amount") +
-			"     Total Time:" + 
-			SLS.LoadFloat("shape" + i + "_incorrect_totaltime") +
-			"     Out of Time:" +
-			SLS.LoadInt("shape" + i + "_timeup_amount") +
-			"\n";
-		}*/
-
-		for(int i=0; i<amountOfShapes; i++){
-			debugTxt += "SHAPE";
-
-			if(i<10){debugTxt += "0";}
-
-			debugTxt += ""+ i + " - Correct:";
-
-			if(SLS.LoadInt("shape" + i + "_correct_amount")<10){debugTxt += "0";}
-
-			debugTxt += "" + SLS.LoadInt("shape" + i + "_correct_amount") +
-			"     Total Time:" + 
-			SLS.LoadFloat("shape" + i + "_correct_totaltime").ToString("F3") +
-			"     Incorrect:";
-
-			if(SLS.LoadInt("shape" + i + "_incorrect_amount")<10){debugTxt += "0";}
-
-			debugTxt += "" + SLS.LoadInt("shape" + i + "_incorrect_amount") +
-			"     Total Time:" + 
-			SLS.LoadFloat("shape" + i + "_incorrect_totaltime").ToString("F3") +
-			"     Out of Time:";
-
-			if(SLS.LoadInt("shape" + i + "_timeup_amount")<10){debugTxt += "0";}
-
-			debugTxt += "" + SLS.LoadInt("shape" + i + "_timeup_amount") +
-			"\n";
-		}
-
-		debugTxt += "\n";
-
-		for(int j=0; j <= SLS.LoadInt("highscore"); j++){
-			debugTxt += "Score:" + j + "     Frequency:" + SLS.LoadInt("finalscore_" + j) + "\n";
-		}
-
-
-
-		debugTextlist.Add(debugTxt);
-
-	}
 
 	//Timer stuff//
 	void CountdownTimer(){
@@ -623,13 +452,7 @@ public class GameManager_Script : MonoBehaviour {
 		AMS.PlayAnswerWrong();
 
 		UpdateHighscore();
-	//	shouldStart = false;
-		Debug.Log("WRONG NOOB");
-	//	gameover = true;
-	//	gameOverLbl.SetActive(true);
-	//	restartBtn.SetActive(true);
 
-		//PanelTween_Gameplay.PlayReverse();
 		PanelTween_Gameplay_NonGameover.PlayForward();
 
 		PanelTween_Darklayer.PlayForward();
@@ -669,17 +492,6 @@ public class GameManager_Script : MonoBehaviour {
 
 		ADS.HideAd();
 
-	/*	if(ShowInstruction){
-			currentGameState = GameStates.Instruction;
-		}
-
-		else{
-			currentGameState = GameStates.Play;
-		}
-	*/	
-	//	shapes_TweenPos.ResetToBeginning();
-	//	shapes_TweenScale.ResetToBeginning();
-
 		PanelTween_Gameplay_NonGameover.PlayReverse();
 
 		shapes_TweenPos.PlayReverse();
@@ -691,20 +503,11 @@ public class GameManager_Script : MonoBehaviour {
 		score_TweenAlpha.PlayReverse();
 		highscore_TweenAlpha.PlayReverse();
 
-	//	PanelTween_Gameplay.PlayForward();
-	//	shouldStart = true;
 		PanelTween_Darklayer.PlayReverse();
 		PanelTween_Gameover.PlayReverse();
 
 		ClearGameoverShapeText();
 
-	//	gameOverLbl.SetActive(false);
-	//	restartBtn.SetActive(false);
-
-		//SetCorrectAnswer();
-
-		//gameover = false;
-		//currentCountdown = maxCountdown;
 		ResetTimer();
 
 		currentDifficulty = 0;
@@ -798,7 +601,6 @@ public class GameManager_Script : MonoBehaviour {
 
 		//If going Home from Gameover
 		else if(currentGameState == GameStates.Gameover){
-			//PanelTween_Gameplay_NonGameover.PlayReverse();
 			ADS.HideAd();
 
 			ClearGameoverShapeText();
@@ -813,10 +615,7 @@ public class GameManager_Script : MonoBehaviour {
 			highscore_TweenAlpha.PlayReverse();
 			PanelTween_Gameover.PlayReverse();
 
-		//	PanelTween_Gameover.AddOnFinished( ToggleInfo() );
-
 			EventDelegate.Add (PanelTween_Gameover.onFinished, PanelTween_Gameplay_NonGameover.PlayReverse, true);
-		//	EventDelegate.Remove(PanelTween_Gameplay_NonGameover.onFinished)
 		}
 
 		currentGameState = GameStates.Menu;
@@ -853,5 +652,9 @@ public class GameManager_Script : MonoBehaviour {
 	public void ShareToTwitter(){
 		GAS.SetShare(score);
 		TWS.ShareScore(score);
+	}
+
+	public void FieroWebsiteLink(){
+		Application.OpenURL("http://www.fiero.co.nz");
 	}
 }
