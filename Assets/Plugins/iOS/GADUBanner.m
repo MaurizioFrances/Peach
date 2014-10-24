@@ -43,11 +43,15 @@
   // Choose the correct Smart Banner constant according to orientation.
   UIDeviceOrientation currentOrientation = [[UIDevice currentDevice] orientation];
   GADAdSize adSize;
+  //Always set the orientation to Landscape
+  adSize = kGADAdSizeSmartBannerLandscape;
+  /*
   if (UIInterfaceOrientationIsPortrait(currentOrientation)) {
     adSize = kGADAdSizeSmartBannerPortrait;
   } else {
     adSize = kGADAdSizeSmartBannerLandscape;
   }
+  */
   return [self initWithBannerClientReference:bannerClient
                                     adUnitID:adUnitID
                                       adSize:adSize
